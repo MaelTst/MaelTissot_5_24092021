@@ -1,4 +1,4 @@
-fetch("http://127.0.0.1:3000/api/cameras/")
+fetch("https://api.orinoco.maeltissot.com/api/cameras")
             .then ((response) => response.json())
             .then ((array) => { buildProducts(array) })
 

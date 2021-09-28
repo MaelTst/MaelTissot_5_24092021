@@ -1,4 +1,15 @@
 /* @import "/utils/variables";
 @import "utils/animations"; */
+.homeHeader {
+  background-image: url("/frontend/img/header-bg.jpg");
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.homeHeader__Title {
+  font-family: "Oswald", sans-serif;
+  font-size: 50px;
+  letter-spacing: 10;
+}
 
 /*# sourceMappingURL=main.css.map */

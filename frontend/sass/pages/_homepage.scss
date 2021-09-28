@@ -1,0 +1,11 @@
+.homeHeader {
+    background-image: url("/frontend/img/header-bg.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    &__Title {
+        font-family: 'Oswald', sans-serif;
+        font-size: 50px;
+        letter-spacing: 10;
+    }
+}
