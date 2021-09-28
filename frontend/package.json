@@ -1,0 +1,22 @@
+{
+  "name": "p5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./css/main.css",
+    "build-sass": "sass --no-source-map ./sass/main.scss ./css/main.css --style compressed",
+    "prefix": "postcss --no-map ./css/main.css --use autoprefixer -r"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaelTst/MaelTissot_5_24092021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "browserslist": "last 4 versions",
+  "bugs": {
+    "url": "https://github.com/MaelTst/MaelTissot_5_24092021/issues"
+  },
+  "homepage": "https://github.com/MaelTst/MaelTissot_5_24092021#readme"
+}
