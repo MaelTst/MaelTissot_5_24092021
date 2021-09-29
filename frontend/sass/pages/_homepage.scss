@@ -3,9 +3,16 @@
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
+    height: 50vh;
     &__Title {
-        font-family: 'Oswald', sans-serif;
-        font-size: 50px;
-        letter-spacing: 10;
+        letter-spacing: 10px;
     }
+}
+
+.card:hover .overflow-hidden img {
+    transform: scale(1.2);
+}
+
+.overflow-hidden img {
+    transition: all 1s;
 }

@@ -1,15 +1,29 @@
 /* @import "/utils/variables";
 @import "utils/animations"; */
+.footerLinks {
+  text-decoration: none;
+}
+.footerLinks:hover {
+  text-decoration: underline;
+}
+
 .homeHeader {
   background-image: url("../img/header-bg.jpg");
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
+  height: 50vh;
 }
 .homeHeader__Title {
-  font-family: "Oswald", sans-serif;
-  font-size: 50px;
-  letter-spacing: 10;
+  letter-spacing: 10px;
+}
+
+.card:hover .overflow-hidden img {
+  transform: scale(1.2);
+}
+
+.overflow-hidden img {
+  transition: all 1s;
 }
 
 /*# sourceMappingURL=main.css.map */
