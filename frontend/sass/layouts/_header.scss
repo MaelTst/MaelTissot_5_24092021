@@ -1,1 +1,6 @@
-
+#navbarContent .navbar-nav .nav-item .nav-link {
+    color: #212529;
+    &:hover {
+        color: #8A9299;
+    }
+}

@@ -1,7 +1,15 @@
-.footerLinks {
-    text-decoration: none;
-    &:hover {
-        text-decoration: underline;
+footer {
+
+    h4 {
+        font-size: 0.8rem;
+    }
+    .footerLinks {
+        text-decoration: none;
+        color: #8A9299;
+        &:hover {
+            text-decoration: underline;
+        }
+
     }
 
 }

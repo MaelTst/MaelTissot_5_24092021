@@ -1,20 +1,31 @@
 /* @import "/utils/variables";
 @import "utils/animations"; */
-.footerLinks {
-  text-decoration: none;
+#navbarContent .navbar-nav .nav-item .nav-link {
+  color: #212529;
 }
-.footerLinks:hover {
+#navbarContent .navbar-nav .nav-item .nav-link:hover {
+  color: #8A9299;
+}
+
+footer h4 {
+  font-size: 0.8rem;
+}
+footer .footerLinks {
+  text-decoration: none;
+  color: #8A9299;
+}
+footer .footerLinks:hover {
   text-decoration: underline;
 }
 
-.homeHeader {
+.heroHeader {
   background-image: url("../img/header-bg.jpg");
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
   height: 50vh;
 }
-.homeHeader__Title {
+.heroHeader__Title {
   letter-spacing: 10px;
 }
 
