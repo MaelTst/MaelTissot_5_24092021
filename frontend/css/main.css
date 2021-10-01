@@ -7,6 +7,25 @@
   color: #8A9299;
 }
 
+.hero {
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.hero__Title {
+  letter-spacing: 10px;
+}
+
+.homeHeader {
+  background-image: url("../img/header-bg.jpg");
+  height: 50vh;
+}
+
+.productHeader {
+  background-image: url("../img/header-bg.jpg");
+  height: 25vh;
+}
+
 footer h4 {
   font-size: 0.8rem;
 }
@@ -16,17 +35,6 @@ footer .footerLinks {
 }
 footer .footerLinks:hover {
   text-decoration: underline;
-}
-
-.heroHeader {
-  background-image: url("../img/header-bg.jpg");
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 50vh;
-}
-.heroHeader__Title {
-  letter-spacing: 10px;
 }
 
 .card:hover .overflow-hidden img {

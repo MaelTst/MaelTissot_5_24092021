@@ -4,7 +4,7 @@ fetch(urlAPI + "/api/cameras")
     .then((response) => {
         if (response.ok) {
             response.json()
-                .then((array) => { buildProducts(array) })
+                .then((array) => { buildCards(array) })
         }
         else {
             console.log('Réponse fetch incorrecte');
@@ -16,7 +16,7 @@ fetch(urlAPI + "/api/cameras")
     });
 
 
-function buildProducts(data) {
+function buildCards(data) {
     document.getElementById('productContainer').innerHTML = ""
     data.forEach((item) => {
         // Formate le prix du produit 
@@ -26,12 +26,12 @@ function buildProducts(data) {
                     <div class="col-12 col-md-6 col-xl-4 p-3">
                         <div class="card text-center shadow-sm">
                             <div class="overflow-hidden">
-                                <img src="${item.imageUrl}" class="card-img-top" alt="Appareil photo ${item.name}">
+                            <a href="produit.html?_id=${item._id}"><img src="${item.imageUrl}" class="card-img-top" alt="Appareil photo ${item.name}"></a>
                             </div>
                             <div class="card-body">
                                 <h3 class="card-title">${item.name}</h3>
                                 <p class="card-text">${item.description}</p>
-                                <a href="/produit.html?id=${item._id}" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> À partir de ${formatedPrice}</a>
+                                <a href="produit.html?_id=${item._id}" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> À partir de ${formatedPrice}</a>
                             </div>
                         </div>
                     </div>`

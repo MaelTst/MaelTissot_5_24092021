@@ -4,3 +4,23 @@
         color: #8A9299;
     }
 }
+
+.hero {
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    &__Title {
+        letter-spacing: 10px;
+    }
+}
+
+.homeHeader {
+    background-image: url("../img/header-bg.jpg");
+    height: 50vh;
+}
+
+
+.productHeader {
+    background-image: url("../img/header-bg.jpg");
+    height: 25vh;
+}
