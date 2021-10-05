@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="img/logo/favicon.png">
 </head>
 
-<body>
+<body class="flex-column d-flex min-vh-100">
     <header>
         <div class="container-fluid bg-white">
             <div class="container-xxl">
@@ -34,7 +34,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-center p-3 mt-1" href="#"><i
+                                    <a class="nav-link text-center p-3 mt-1" href="cart.html"><i
                                             class="fs-5 fas fa-shopping-cart"></i><span id="cartCount"
                                             class="ms-1 badge rounded-pill bg-danger"></span>
                                         <p class="m-0">Panier</p>
@@ -47,9 +47,9 @@
             </div>
         </div>
         <div class="container-fluid bg-dark">
-            <div class="row text-light text-center align-items-center hero productHeader">
+            <div class="row text-light text-center align-items-center hero cartHeader">
                 <div class="col">
-                    <h1 class="text-uppercase hero__Title display-5"></h1>
+                    <h1 class="text-uppercase hero__Title display-5">Panier</h1>
                 </div>
             </div>
         </div>
@@ -59,8 +59,30 @@
         <div class="container-xxl pt-5 pb-5 ps-0 pe-0">
 
 
-            <div id="productContainer" class="row justify-content-center shadow-sm">
-        </div>
+            <div id="productContainer" class="align-items-center boxedContainer row justify-content-center shadow-sm">
+                <div class="col-12 p-3">
+                    <table class="table align-middle text-center table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Produit</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col">Quantité</th>
+                                <th scope="col">Sous-Total</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productListCart">
+                            <tr>
+                                <td colspan="3">Total : </td>
+                                <td colspan="3" id="CartTotalPrice"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button onclick="clearLocalStorage()">Vider le panier</button>
+            </div>
 
 
 
@@ -69,7 +91,7 @@
         </div>
     </main>
 
-    <footer class="container-fluid bg-dark text-light pt-3 pb-3">
+    <footer class="mt-auto container-fluid bg-dark text-light pt-3 pb-3">
         <div class="container-xxl">
             <div class="row">
                 <div class="col-12 col-md-4 p-4">
@@ -104,7 +126,7 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7b50d1d691.js" crossorigin="anonymous"></script>
     <script src="js/functions.js"></script>
-    <script src="js/product.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>

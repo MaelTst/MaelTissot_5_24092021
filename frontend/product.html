@@ -47,10 +47,9 @@
             </div>
         </div>
         <div class="container-fluid bg-dark">
-            <div class="row text-light text-center align-items-center hero homeHeader">
+            <div class="row text-light text-center align-items-center hero productHeader">
                 <div class="col">
-                    <h1 class="text-uppercase hero__Title display-5">Bienvenue sur Orinoco</h1>
-                    <p class="display-6 fs-5">Explorez notre catalogue de caméras vintage</p>
+                    <h1 class="text-uppercase hero__Title display-5"></h1>
                 </div>
             </div>
         </div>
@@ -58,71 +57,14 @@
 
     <main class="container-fluid">
         <div class="container-xxl pt-5 pb-5 ps-0 pe-0">
-            <h2 class="text-center pb-5 m-0 display-6">Decouvrez nos appareils photo</h2>
-            <div id="productContainer" class="row justify-content-center">
+
+
+            <div id="productContainer" class="align-items-center boxedContainer row justify-content-center shadow-sm"></div>
 
 
 
-                <div class="col-12 col-md-6 col-xl-4 p-3">
-                    <div class="card text-center shadow-sm" aria-hidden="true">
-                        <img src="./img/placeholder.jpg" class="card-img-top" alt="Placeholder">
-                        <div class="card-body">
-                            <h3 class="card-title placeholder-glow">
-                                <span class="placeholder col-6"></span>
-                            </h3>
-                            <p class="card-text placeholder-glow">
-                                <span class="placeholder col-7"></span>
-                                <span class="placeholder col-4"></span>
-                                <span class="placeholder col-4"></span>
-                                <span class="placeholder col-6"></span>
-                                <span class="placeholder col-8"></span>
-                            </p>
-                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-12 col-md-6 col-xl-4 p-3">
-                    <div class="card text-center shadow-sm" aria-hidden="true">
-                        <img src="./img/placeholder.jpg" class="card-img-top" alt="Placeholder">
-                        <div class="card-body">
-                            <h3 class="card-title placeholder-glow">
-                                <span class="placeholder col-6"></span>
-                            </h3>
-                            <p class="card-text placeholder-glow">
-                                <span class="placeholder col-7"></span>
-                                <span class="placeholder col-4"></span>
-                                <span class="placeholder col-4"></span>
-                                <span class="placeholder col-6"></span>
-                                <span class="placeholder col-8"></span>
-                            </p>
-                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-xl-4 p-3">
-                    <div class="card text-center shadow-sm" aria-hidden="true">
-                        <img src="./img/placeholder.jpg" class="card-img-top" alt="Placeholder">
-                        <div class="card-body">
-                            <h3 class="card-title placeholder-glow">
-                                <span class="placeholder col-6"></span>
-                            </h3>
-                            <p class="card-text placeholder-glow">
-                                <span class="placeholder col-7"></span>
-                                <span class="placeholder col-4"></span>
-                                <span class="placeholder col-4"></span>
-                                <span class="placeholder col-6"></span>
-                                <span class="placeholder col-8"></span>
-                            </p>
-                            <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
+        </div>
     </main>
 
     <footer class="mt-auto container-fluid bg-dark text-light pt-3 pb-3">
@@ -155,12 +97,37 @@
             </div>
         </div>
     </footer>
+
+
+
+
+    <div class="modal fade" id="addedToCart" tabindex="-1" aria-labelledby="addedToCartLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addedToCartLabel">C'est dans le sac !</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Excellent choix ! Le produit a été ajouté à votre panier</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer mes achats</button>
+              <a href="cart.html" class="btn btn-primary">Valider ma commande</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
         integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7b50d1d691.js" crossorigin="anonymous"></script>
     <script src="js/functions.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/product.js"></script>
 </body>
 
 </html>

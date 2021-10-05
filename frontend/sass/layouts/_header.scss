@@ -9,18 +9,17 @@
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
+    background-image: url("../img/header-bg.jpg");
     &__Title {
         letter-spacing: 10px;
     }
 }
 
 .homeHeader {
-    background-image: url("../img/header-bg.jpg");
     height: 50vh;
 }
 
 
-.productHeader {
-    background-image: url("../img/header-bg.jpg");
+.productHeader, .cartHeader {
     height: 25vh;
 }

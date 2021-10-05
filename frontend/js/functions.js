@@ -11,9 +11,24 @@ function cartPreview() {
     currentCart.forEach((line) => {
         if (line.quantity) {
         currentCartCount = currentCartCount + parseInt(line.quantity)
-    }
+        }
     })
     if (currentCartCount !== 0) {
         document.getElementById('cartCount').innerHTML = currentCartCount
+    } else {
+        document.getElementById('cartCount').innerHTML = ""
     }
 }
+
+
+function clearLocalStorage() {
+    localStorage.clear()
+    buildCart()
+    cartPreview()
+
+}
+
+let errorMsg = `<div class="col-12 p-3 text-center">
+                <i class="fas fa-exclamation-triangle display-1 mb-3"></i>
+                <p class="display-6 fs-4 text-center text-danger">Une erreur est survenue, veuillez rééssayer ultérieurement.</p>
+                </div>`

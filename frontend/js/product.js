@@ -4,24 +4,29 @@ let getApi = (new URL(document.location)).searchParams.get('_id');
 let productData = []
 
 
-
-fetch(urlApi + "/api/cameras/" + getApi)
-    .then((response) => {
-        if (response.ok) {
-            response.json()
-                .then((array) => {
-                    productData = array
-                    buildProductPage()
-                })
-        }
-        else {
-            console.log('Réponse fetch incorrecte');
-        }
-    })
-    .catch((error) => {
-        console.log('Erreur lors du fetch : ' + error.message)
-        document.getElementById('productContainer').innerHTML = '<p class="display-6 fs-4 text-center text-danger">Une erreur est survenue, veuillez rééssayer ultérieurement.</p>'
-    });
+if (getApi) {
+    fetch(urlApi + "/api/cameras/" + getApi)
+        .then((response) => {
+            if (response.ok) {
+                response.json()
+                    .then((array) => {
+                        productData = array
+                        buildProductPage()
+                    })
+            }
+            else {
+                document.getElementById('productContainer').innerHTML = errorMsg
+                console.log(`Echec de la requete : ${response.status} (${response.statusText})`);
+            }
+        })
+        .catch((error) => {
+            document.getElementById('productContainer').innerHTML = errorMsg
+            console.log('Erreur lors du fetch : ' + error.message)
+            
+        });
+} else {
+    document.getElementById('productContainer').innerHTML = errorMsg
+}
 
 
 
@@ -36,18 +41,21 @@ function buildProductPage() {
         <div class="col-12 col-lg-6 p-3"><img src="${productData.imageUrl}" class="img-thumbnail" alt="Appareil photo ${productData.name}"></div>
         <div class="col-12 col-lg-6 p-3">
             <h2 class="">${productData.name}</h2><span class="fw-bold">${price}</span>
-            <h3 class="mb-3 fs-6 fw-normal lh-base">${productData.description}</h3>
-            <span class="input-group-text" id="inputGroup-sizing-sm"><label for="lensChoice">Objectif</label></span>
-            <select class="form-select" id="lensChoice" aria-label="Objectifs"></select>
-
-            <div class="input-group mb-3 mt-3">
-            <span class="input-group-text" id="inputGroup-sizing-sm"><label for="productQty">Quantité</label></span>
-            <input type="number" id="productQty" class="form-control" value="1" min="1" max="100">
-
-
-            <button class="btn btn-primary form-control" type="button" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+            <h3 class="mt-3 mb-3 fs-6 fw-normal lh-base">${productData.description}</h3>
+            <div class="row">
+                <div class="col-sm-9 col-12">
+                    <label for="lensChoice" class="form-label">Objectif</label>
+                    <select class="form-select mb-3" id="lensChoice" aria-label="Objectifs"></select>
+                </div>
+                <div class="col-sm-3 col-12">
+                    <label for="productQty" class="form-label">Quantité</label>
+                    <input type="number" id="productQty" class="form-control mb-3" value="1" min="1" max="100">
+                </div>
             </div>
-        </div>    
+            <div class="col-12">
+                <button class="btn btn-primary form-control mt-3 mb-3" type="button" data-bs-toggle="modal" data-bs-target="#addedToCart" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+            </div>
+        </div>  
     `
     productData.lenses.forEach((lens, index) => {
         let choice = document.createElement("option");
@@ -64,6 +72,7 @@ function buildProductPage() {
 
 function addToCart() {
     let currentCart = JSON.parse(localStorage.getItem("products")) || []
+    let selOption = document.getElementById('lensChoice')
     let existingProduct
     let indexProduct
     let purchaseList =
@@ -72,7 +81,8 @@ function addToCart() {
         name: productData.name,
         price: productData.price,
         imageUrl: productData.imageUrl,
-        lenses: document.getElementById('lensChoice').value,
+        lenses: selOption.value,
+        lensesText: selOption.options[selOption.value].text,
         quantity: document.getElementById('productQty').value
     }
 
