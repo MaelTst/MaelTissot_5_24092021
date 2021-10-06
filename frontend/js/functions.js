@@ -28,7 +28,7 @@ function clearLocalStorage() {
 
 }
 
-let errorMsg = `<div class="col-12 p-3 text-center">
+let errorMsg = `<div class="col-12 p-3 text-center p-5">
                 <i class="fas fa-exclamation-triangle display-1 mb-3"></i>
                 <p class="display-6 fs-4 text-center text-danger">Une erreur est survenue, veuillez rééssayer ultérieurement.</p>
                 </div>`

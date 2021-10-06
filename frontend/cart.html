@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Orinoco - Vente en ligne de caméras vintage</title>
+    <title>Mon panier - Orinoco</title>
     <meta name="description" content="Découvrez notre catalogue de caméras vintage d'exception">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -59,31 +59,124 @@
         <div class="container-xxl pt-5 pb-5 ps-0 pe-0">
 
 
-            <div id="productContainer" class="align-items-center boxedContainer row justify-content-center shadow-sm">
-                <div class="col-12 p-3">
-                    <table class="table align-middle text-center table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Produit</th>
-                                <th scope="col">Prix</th>
-                                <th scope="col">Quantité</th>
-                                <th scope="col">Sous-Total</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody id="productListCart">
-                            <tr>
-                                <td colspan="3">Total : </td>
-                                <td colspan="3" id="CartTotalPrice"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div id="productContainer" class="align-items-center row justify-content-center boxShadow">
+                <h2 class="text-center display-6 p-3 mt-3">Finaliser votre commande</h2>
+                <div id="cartListContainer" class="col-xl-9 col-12 p-3 align-self-start">
+                    <div class="row align-items-center display-5 fs-5 ms-0 me-0">
+                        <div class="col-md-2 d-none d-md-block p-3"></div>
+                        <div class="col-md-4 d-none d-md-block p-3">Produit</div>
+                        <div class="col-md-2 d-none d-md-block p-3">Prix</div>
+                        <div class="col-md-2 d-none d-md-block p-3">Quantité</div>
+                        <div class="col-md-2 d-none d-md-block p-3">Sous-total</div>
+                    </div>
                 </div>
 
-                <button onclick="clearLocalStorage()">Vider le panier</button>
+                <div class="col-xl-3 col-12 p-3 align-self-start">
+                    <div class="text-center display-5 fs-5 p-3">Total</div>
+                    <div class="bg-light border p-3">
+                        <p id="CartTotalPrice" class="text-center fw-bold"></p>
+
+
+
+                        <button class="btn btn-primary w-100 rounded-0" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFormOder" aria-expanded="false" aria-controls="collapseFormOder">
+                            Passer commande
+                        </button>
+
+                        <div class="collapse" id="collapseFormOder">
+                            <div class="card card-body rounded-0 rounded-bottom">
+
+                                <form class="row g-3 needs-validation" novalidate>
+                                    <div class="col-md-6 col-12">
+                                        <label for="inputName" class="form-label">Prénom</label>
+                                        <input type="text" class="form-control" id="inputName" placeholder="John"
+                                            required>
+                                        <div class="invalid-feedback">Saisissez un prénom valide</div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <label for="intputLastName" class="form-label">Nom</label>
+                                        <input type="text" class="form-control" id="intputLastName" placeholder="Doe"
+                                            required>
+                                        <div class="invalid-feedback">Saisissez un nom valide</div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="intputEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="intputEmail"
+                                            placeholder="johndoe@exemple.com" required>
+                                        <div class="invalid-feedback">Saisissez une adresse email valide</div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="intputAddress" class="form-label">Adresse</label>
+                                        <input type="text" class="form-control" id="intputAddress"
+                                            placeholder="5 Av. Anatole France" required>
+                                        <div class="invalid-feedback">Saisissez une adresse valide</div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="intputCity" class="form-label">Ville</label>
+                                        <input type="text" class="form-control" id="intputCity" placeholder="Paris"
+                                            required>
+                                        <div class="invalid-feedback">Saisissez une ville valide</div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck"
+                                                required>
+                                            <label class="form-check-label" for="invalidCheck">J'accepte les conditions
+                                                générales de vente</label>
+                                            <div class="invalid-feedback">Vous devez accepter les conditions avant de
+                                                procéder à la commande</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button class="btn btn-primary mt-2 mb-2 w-100" type="submit">Payer</button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary w-100 mt-3 rounded-0" data-bs-toggle="modal"
+                            data-bs-target="#clearCart">Vider le panier</button>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
             </div>
 
+
+
+
+
+
+
+            <div class="modal fade" id="clearCart" tabindex="-1" aria-labelledby="clearCartLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header border-0 justify-content-center">
+                            <h5 class="modal-title" id="clearCartLabel">Suppression du panier</h5>
+                            <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <i class="display-3 fas fa-trash-alt mb-3" aria-hidden="true"></i>
+                            <p class="mb-0">Cette action videra le panier de tous les articles actuellement
+                                présents. Voulez-vous continuer ?</p>
+                        </div>
+                        <div class="modal-footer border-0 justify-content-center p-3">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                onclick="clearLocalStorage()">Confirmer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 

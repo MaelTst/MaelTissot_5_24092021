@@ -1,11 +1,11 @@
 let urlApi = (location.hostname === "localhost" || location.hostname === "127.0.0.1" || !location.hostname) ? "http://localhost:3000" : "https://api.orinoco.maeltissot.com"
 
-let getApi = (new URL(document.location)).searchParams.get('_id');
+let productId = (new URL(document.location)).searchParams.get('_id');
 let productData = []
 
 
-if (getApi) {
-    fetch(urlApi + "/api/cameras/" + getApi)
+if (productId) {
+    fetch(urlApi + "/api/cameras/" + productId)
         .then((response) => {
             if (response.ok) {
                 response.json()
@@ -36,7 +36,6 @@ function buildProductPage() {
     let price = priceConverter(productData.price)
     document.title = `Appareil photo ${productData.name} - Orinoco`
     document.querySelector('.hero__Title').innerHTML = productData.name
-    //document.querySelector('.productHeader').style.backgroundImage = `url('${data.imageUrl}')`;
     document.getElementById('productContainer').innerHTML = `
         <div class="col-12 col-lg-6 p-3"><img src="${productData.imageUrl}" class="img-thumbnail" alt="Appareil photo ${productData.name}"></div>
         <div class="col-12 col-lg-6 p-3">
@@ -53,7 +52,7 @@ function buildProductPage() {
                 </div>
             </div>
             <div class="col-12">
-                <button class="btn btn-primary form-control mt-3 mb-3" type="button" data-bs-toggle="modal" data-bs-target="#addedToCart" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                <button class="btn btn-primary w-100 mt-3 mb-3" type="button" data-bs-toggle="modal" data-bs-target="#addedToCart" onclick="addToCart()"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
             </div>
         </div>  
     `

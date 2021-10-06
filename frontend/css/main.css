@@ -1,7 +1,12 @@
 /* @import "/utils/variables";
 @import "utils/animations"; */
-.boxedContainer {
-  min-height: 400px;
+body {
+  overflow: auto !important;
+  padding-right: 0 !important;
+}
+
+.boxShadow {
+  box-shadow: 0 0.15rem 0.5rem rgba(0, 0, 0, 0.15);
 }
 
 #navbarContent .navbar-nav .nav-item .nav-link {

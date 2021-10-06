@@ -59,7 +59,7 @@
         <div class="container-xxl pt-5 pb-5 ps-0 pe-0">
 
 
-            <div id="productContainer" class="align-items-center boxedContainer row justify-content-center shadow-sm"></div>
+            <div id="productContainer" class="align-items-center row justify-content-center boxShadow"></div>
 
 
 
@@ -104,14 +104,15 @@
     <div class="modal fade" id="addedToCart" tabindex="-1" aria-labelledby="addedToCartLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0 justify-content-center">
               <h5 class="modal-title" id="addedToCartLabel">C'est dans le sac !</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <p>Excellent choix ! Le produit a été ajouté à votre panier</p>
+            <div class="modal-body text-center">
+                <i class="display-3 fas fa-cart-plus mb-3" aria-hidden="true"></i>
+                <p class="mb-0">Excellent choix ! Le produit a été ajouté à votre panier</p>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0 justify-content-center p-3">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer mes achats</button>
               <a href="cart.html" class="btn btn-primary">Valider ma commande</a>
             </div>
