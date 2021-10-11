@@ -70,7 +70,7 @@ function buildProductPage() {
 
 
 function addToCart() {
-    let currentCart = JSON.parse(localStorage.getItem("products")) || []
+    currentCart = JSON.parse(localStorage.getItem("products")) || []
     let selOption = document.getElementById('lensChoice')
     let existingProduct
     let indexProduct

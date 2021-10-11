@@ -1,4 +1,6 @@
+let CurrentCart
 cartPreview()
+
 
 function priceConverter(basePrice) {
     let price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(basePrice / 100);
