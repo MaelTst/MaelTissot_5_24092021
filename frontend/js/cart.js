@@ -1,12 +1,16 @@
+let orderForm = document.getElementById("orderForm")
+let listId
+let totalPrice
 buildCart()
 
-
 function buildCart() {
-    let totalPrice = 0
+    totalPrice = 0
+    listId = []
     document.getElementById('cartListContainer').innerHTML = ""
     currentCart = JSON.parse(localStorage.getItem("products")) || []
     if (currentCart.length != 0) {
         currentCart.forEach((line, index) => {
+            listId.push(line._id)
             totalPrice = (totalPrice + (line.price * line.quantity))
             document.getElementById('cartListContainer').innerHTML += `
                 <div class="row border-top align-items-center ms-0 me-0">
@@ -43,8 +47,8 @@ function buildCart() {
 
 function modifyCart(operator, index) {
     switch (operator) {
-        case "subtract": 
-            if (currentCart[index].quantity < 2) { 
+        case "subtract":
+            if (currentCart[index].quantity < 2) {
                 currentCart.splice(index, 1)
                 localStorage.setItem('products', JSON.stringify(currentCart))
             } else {
@@ -52,9 +56,9 @@ function modifyCart(operator, index) {
                 localStorage.setItem('products', JSON.stringify(currentCart))
             }
             break;
-        case "add": 
-        currentCart[index].quantity++
-        localStorage.setItem('products', JSON.stringify(currentCart))
+        case "add":
+            currentCart[index].quantity++
+            localStorage.setItem('products', JSON.stringify(currentCart))
             break;
         default:
             console.log("erreur")
@@ -64,19 +68,69 @@ function modifyCart(operator, index) {
 }
 
 
-(function () {
-    'use strict'
-    var forms = document.querySelectorAll('.needs-validation')
 
-    Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
 
-                form.classList.add('was-validated')
-            }, false)
+orderForm.addEventListener("submit", function (event) {
+    event.preventDefault()
+    if (!orderForm.checkValidity()) {
+        orderForm.classList.add('was-validated')
+    } else {
+        let orderData = {
+            contact: {
+                firstName: document.getElementById('inputName').value,
+                lastName: document.getElementById('intputLastName').value,
+                email: document.getElementById('intputEmail').value,
+                address: document.getElementById('intputAddress').value,
+                city: document.getElementById('intputCity').value,
+            },
+            products: listId
+        }
+
+        fetch(urlApi + "/api/cameras/order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(orderData),
         })
-})()
+            .then((response) => {
+                if (response.ok) {
+                    response.json()
+                        .then((array) => {
+
+                            let listOrders = JSON.parse(localStorage.getItem("orders")) || []
+                            let orderInfos = {
+                                infos: {
+                                    orderKey: array.orderId,
+                                    orderPrice: totalPrice,
+                                    date: Date.now(),
+                                },
+                                contact: array.contact,
+                                products: currentCart
+                            }
+
+                            listOrders.unshift(orderInfos)
+                            localStorage.setItem('orders', JSON.stringify(listOrders))
+                            clearCart()
+                            window.location.href = "order.html"
+
+                        })
+                }
+                else {
+                    console.log('Echec de la requete')
+                }
+            })
+            .catch((error) => {
+                console.log(error.message)
+            });
+    }
+
+
+
+
+
+
+
+
+});
+

@@ -1,5 +1,3 @@
-let urlApi = (location.hostname === "localhost" || location.hostname === "127.0.0.1" || !location.hostname) ? "http://localhost:3000" : "https://api.orinoco.maeltissot.com"
-
 let productId = (new URL(document.location)).searchParams.get('_id');
 let productData = []
 

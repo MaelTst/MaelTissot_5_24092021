@@ -1,3 +1,6 @@
+let urlApi = (location.hostname === "localhost" || location.hostname === "127.0.0.1" || !location.hostname) ? "http://localhost:3000" : "https://api.orinoco.maeltissot.com"
+
+
 let CurrentCart
 cartPreview()
 
@@ -5,6 +8,11 @@ cartPreview()
 function priceConverter(basePrice) {
     let price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(basePrice / 100);
     return price
+}
+
+function dateConverter(baseDate) {
+    let fullDate = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium', timeStyle: 'short' }).format(baseDate);
+    return fullDate
 }
 
 function cartPreview() {
@@ -23,12 +31,21 @@ function cartPreview() {
 }
 
 
-function clearLocalStorage() {
-    localStorage.clear()
+function clearCart() {
+    localStorage.removeItem('products');
     buildCart()
     cartPreview()
 
 }
+
+function escapeOutput(output) {
+    return output
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+  }
 
 let errorMsg = `<div class="col-12 p-3 text-center p-5">
                 <i class="fas fa-exclamation-triangle display-1 mb-3"></i>
