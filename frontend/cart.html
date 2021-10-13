@@ -21,8 +21,8 @@
                         <a class="navbar-brand" href="index.html"><img src="img/logo/logo_orinoco.jpg"
                                 alt="Logo Orinoco représentant un chariot"></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarContent" aria-controls="navbarToggleExternalContent"
-                            aria-expanded="false" aria-label="Basculer le menu de navigation">
+                            data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                            aria-label="Basculer le menu de navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
@@ -54,11 +54,8 @@
             </div>
         </div>
     </header>
-
     <main class="container-fluid bg-light">
         <div class="container-xxl pt-5 pb-5 ps-0 pe-0">
-
-
             <div id="productContainer" class="align-items-center bg-white row justify-content-center boxShadow">
                 <h2 class="text-center display-6 p-3 mt-3">Finaliser votre commande</h2>
                 <div class="col-xl-9 col-12 p-3 align-self-start">
@@ -70,22 +67,16 @@
                         <div class="col-md-2 d-none d-md-block p-3">Sous-total</div>
                     </div>
                     <div id="cartListContainer">
-
                     </div>
                 </div>
-
                 <div class="col-xl-3 col-12 p-3 align-self-start">
                     <div class="text-center display-5 fs-5 p-3">Total</div>
                     <div class="bg-light border p-3">
                         <p id="CartTotalPrice" class="text-center fw-bold"></p>
-
-
-
                         <button class="btn btn-primary w-100 rounded-0" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseFormOder" aria-expanded="false" aria-controls="collapseFormOder">
                             Passer commande
                         </button>
-
                         <div class="collapse" id="collapseFormOder">
                             <div class="card card-body rounded-0 rounded-bottom">
 
@@ -137,56 +128,13 @@
 
                             </div>
                         </div>
-
                         <button class="btn btn-secondary w-100 mt-3 rounded-0" data-bs-toggle="modal"
                             data-bs-target="#clearCart">Vider le panier</button>
-
-
-                    </div>
-
-                </div>
-
-
-
-
-
-
-            </div>
-
-
-
-
-
-
-
-            <div class="modal fade" id="clearCart" tabindex="-1" aria-labelledby="clearCartLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header border-0 justify-content-center">
-                            <h5 class="modal-title" id="clearCartLabel">Suppression du panier</h5>
-                            <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-center">
-                            <i class="display-3 fas fa-trash-alt mb-3" aria-hidden="true"></i>
-                            <p class="mb-0">Cette action videra le panier de tous les articles actuellement
-                                présents. Voulez-vous continuer ?</p>
-                        </div>
-                        <div class="modal-footer border-0 justify-content-center p-3">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                                onclick="clearCart()">Confirmer</button>
-                        </div>
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
     </main>
-
     <footer class="mt-auto container-fluid bg-dark text-light pt-3 pb-3">
         <div class="container-xxl">
             <div class="row">
@@ -217,6 +165,27 @@
             </div>
         </div>
     </footer>
+    <div class="modal fade" id="clearCart" tabindex="-1" aria-labelledby="clearCartLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 justify-content-center">
+                    <h5 class="display-6 fs-4 modal-title" id="clearCartLabel">Suppression du panier</h5>
+                    <button type="button" class="btn-close position-absolute end-0 me-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="display-3 fas fa-trash-alt mb-3" aria-hidden="true"></i>
+                    <p class="mb-0">Cette action videra le panier de tous les articles actuellement
+                        présents. Voulez-vous continuer ?</p>
+                </div>
+                <div class="modal-footer border-0 justify-content-center p-3">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        onclick="clearCart()">Confirmer</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
         integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
         crossorigin="anonymous"></script>

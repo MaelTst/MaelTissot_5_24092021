@@ -3,6 +3,11 @@ let listId
 let totalPrice
 buildCart()
 
+orderForm.addEventListener("submit", function (event) {
+    event.preventDefault()
+    postRequest()
+})
+
 function buildCart() {
     totalPrice = 0
     listId = []
@@ -14,8 +19,8 @@ function buildCart() {
             totalPrice = (totalPrice + (line.price * line.quantity))
             document.getElementById('cartListContainer').innerHTML += `
                 <div class="row border-top align-items-center ms-0 me-0">
-                    <div class="col-md-2 col-6 p-3"><img src="${line.imageUrl}" class="img-thumbnail"></div>
-                    <div class="col-md-3 col-6 p-3">${line.name}<br>Objectif : ${line.lensesText}</div>
+                    <div class="col-md-2 col-6 p-3"><img src="${line.imageUrl}" class="img-thumbnail" alt="Appareil photo ${line.name}"></div>
+                    <div class="col-md-3 col-6 p-3"><h3 class="fs-6">${line.name}</h3>Objectif : ${line.lensesText}</div>
                     <div class="col-md-2 col-0 d-none d-md-block p-3">${priceConverter(line.price)}</div>
 
                     <div class="col-md-3 col-6 text-center text-md-start p-3">
@@ -35,8 +40,8 @@ function buildCart() {
         document.getElementById('productContainer').innerHTML = `
             <div class="col-12 p-3 text-center p-5">
             <i class="fas fa-shopping-cart display-1 mb-3"></i>
-            <p class="display-6 text-center">Oh ! Votre panier est vide</p>
-            <p class="display-6 text-center fs-4">Pourquoi ne pas aller découvrir nos produits ?</p>
+            <h2 class="display-6 text-center">Oh ! Votre panier est vide</h2>
+            <h3 class="display-6 text-center fs-4">Pourquoi ne pas aller découvrir nos produits ?</h3>
             <a href="index.html" class="btn btn-primary mt-3">Découvrez nos produits</a>
             </div>
         `
@@ -68,10 +73,7 @@ function modifyCart(operator, index) {
 }
 
 
-
-
-orderForm.addEventListener("submit", function (event) {
-    event.preventDefault()
+function postRequest() {
     if (!orderForm.checkValidity()) {
         orderForm.classList.add('was-validated')
     } else {
@@ -85,7 +87,6 @@ orderForm.addEventListener("submit", function (event) {
             },
             products: listId
         }
-
         fetch(urlApi + "/api/cameras/order", {
             method: "POST",
             headers: {
@@ -97,8 +98,6 @@ orderForm.addEventListener("submit", function (event) {
                 if (response.ok) {
                     response.json()
                         .then((array) => {
-
-                            let listOrders = JSON.parse(localStorage.getItem("orders")) || []
                             let orderInfos = {
                                 infos: {
                                     orderKey: array.orderId,
@@ -108,12 +107,10 @@ orderForm.addEventListener("submit", function (event) {
                                 contact: array.contact,
                                 products: currentCart
                             }
-
-                            listOrders.unshift(orderInfos)
-                            localStorage.setItem('orders', JSON.stringify(listOrders))
+                            storedOrders.unshift(orderInfos)
+                            localStorage.setItem('orders', JSON.stringify(storedOrders))
                             clearCart()
                             window.location.href = "order.html"
-
                         })
                 }
                 else {
@@ -124,13 +121,5 @@ orderForm.addEventListener("submit", function (event) {
                 console.log(error.message)
             });
     }
-
-
-
-
-
-
-
-
-});
+}
 

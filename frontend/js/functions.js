@@ -1,8 +1,10 @@
 let urlApi = (location.hostname === "localhost" || location.hostname === "127.0.0.1" || !location.hostname) ? "http://localhost:3000" : "https://api.orinoco.maeltissot.com"
+let storedOrders = JSON.parse(localStorage.getItem("orders")) || []
+let currentCart = JSON.parse(localStorage.getItem("products")) || []
 
-
-let CurrentCart
-cartPreview()
+window.addEventListener('DOMContentLoaded', (event) => {
+    cartPreview()
+});
 
 
 function priceConverter(basePrice) {
