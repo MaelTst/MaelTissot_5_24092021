@@ -1,34 +1,31 @@
 let productId = (new URL(document.location)).searchParams.get('_id');
 let productData = []
 
-
-if (productId) {
-    fetch(urlApi + "/api/cameras/" + productId)
-        .then((response) => {
-            if (response.ok) {
-                response.json()
-                    .then((array) => {
-                        productData = array
-                        buildProductPage()
-                    })
-            }
-            else {
+window.addEventListener('DOMContentLoaded', (event) => {
+    if (productId) {
+        fetch(urlApi + "/api/cameras/" + productId)
+            .then((response) => {
+                if (response.ok) {
+                    response.json()
+                        .then((array) => {
+                            productData = array
+                            buildProductPage()
+                        })
+                }
+                else {
+                    document.getElementById('productContainer').innerHTML = errorMsg
+                    console.log(`Echec de la requete : ${response.status} (${response.statusText})`);
+                }
+            })
+            .catch((error) => {
                 document.getElementById('productContainer').innerHTML = errorMsg
-                console.log(`Echec de la requete : ${response.status} (${response.statusText})`);
-            }
-        })
-        .catch((error) => {
-            document.getElementById('productContainer').innerHTML = errorMsg
-            console.log('Erreur lors du fetch : ' + error.message)
-            
-        });
-} else {
-    document.getElementById('productContainer').innerHTML = errorMsg
-}
-
-
-
-
+                console.log('Erreur lors du fetch : ' + error.message)
+                
+            });
+    } else {
+        document.getElementById('productContainer').innerHTML = errorMsg
+    }
+});
 
 function buildProductPage() {
     let price = priceConverter(productData.price)
@@ -62,11 +59,6 @@ function buildProductPage() {
     })
 }
 
-
-
-
-
-
 function addToCart() {
     currentCart = JSON.parse(localStorage.getItem("products")) || []
     let selOption = document.getElementById('lensChoice')
@@ -98,5 +90,4 @@ function addToCart() {
         localStorage.setItem('products', JSON.stringify(currentCart))
     }
     cartPreview()
-
 }

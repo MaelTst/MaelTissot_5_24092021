@@ -3,7 +3,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if (document.getElementById('collapse0')) { new bootstrap.Collapse(document.getElementById('collapse0')) }
 });
 
-
 function buildOrders() {
     totalPrice = 0
     let orderList = `<h2 class="text-center display-6 p-3 mt-3">Historique de vos commandes</h2>`
@@ -77,7 +76,6 @@ function buildOrders() {
     }
     return orderList
 }
-
 
 function buildProductList(index) {
     let productList = ""

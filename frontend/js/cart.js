@@ -1,7 +1,10 @@
 let orderForm = document.getElementById("orderForm")
 let listId
 let totalPrice
-buildCart()
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    buildCart()
+});
 
 orderForm.addEventListener("submit", function (event) {
     event.preventDefault()
@@ -49,7 +52,6 @@ function buildCart() {
 
 }
 
-
 function modifyCart(operator, index) {
     switch (operator) {
         case "subtract":
@@ -71,7 +73,6 @@ function modifyCart(operator, index) {
     buildCart()
     cartPreview()
 }
-
 
 function postRequest() {
     if (!orderForm.checkValidity()) {
@@ -122,4 +123,3 @@ function postRequest() {
             });
     }
 }
-

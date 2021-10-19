@@ -4,4 +4,8 @@
 
 .overflow-hidden img {
     transition: all 1s;
+    @media (min-width: 768px) {
+        height: 275px;
+        object-fit: cover;
+    }
 }

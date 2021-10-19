@@ -6,7 +6,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     cartPreview()
 });
 
-
 function priceConverter(basePrice) {
     let price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(basePrice / 100);
     return price
@@ -31,7 +30,6 @@ function cartPreview() {
         document.getElementById('cartCount').innerHTML = ""
     }
 }
-
 
 function clearCart() {
     localStorage.removeItem('products');
