@@ -1,10 +1,11 @@
+// Ajoute le contenu retourné par la fonction buildOrders une fois le DOM chargé
 window.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById('productContainer').innerHTML = buildOrders()
     if (document.getElementById('collapse0')) { new bootstrap.Collapse(document.getElementById('collapse0')) }
 });
 
+// Construit et retourne le contenu de la page order
 function buildOrders() {
-    totalPrice = 0
     let orderList = `<h2 class="text-center display-6 p-3 mt-3">Historique de vos commandes</h2>`
     if (storedOrders.length != 0) {
         storedOrders.forEach((line, index) => {
@@ -77,6 +78,7 @@ function buildOrders() {
     return orderList
 }
 
+// Construit et retourne le récapitulatif de la commande pour la fonction buildOrders()
 function buildProductList(index) {
     let productList = ""
     storedOrders[index].products.forEach((line) => {

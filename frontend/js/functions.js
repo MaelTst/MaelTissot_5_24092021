@@ -2,20 +2,34 @@ let urlApi = (location.hostname === "localhost" || location.hostname === "127.0.
 let storedOrders = JSON.parse(localStorage.getItem("orders")) || []
 let currentCart = JSON.parse(localStorage.getItem("products")) || []
 
+// Appelle la fonction cartPreview() une fois le DOM chargé
 window.addEventListener('DOMContentLoaded', (event) => {
     cartPreview()
 });
 
+/**
+ * Convertit la valeur price retournée par l'API en un prix intelligible
+ * @param { number } basePrice
+ * @return { number } Prix formaté 
+ */
 function priceConverter(basePrice) {
     let price = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(basePrice / 100);
     return price
 }
 
+/**
+ * Convertit le timestamp retourné par Date.now() en date intelligible
+ * @param { number } baseDate
+ * @return { string } Date formatée
+ */
 function dateConverter(baseDate) {
     let fullDate = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium', timeStyle: 'short' }).format(baseDate);
     return fullDate
 }
 
+/**
+ * Compte le nombre de produits présents dans le localStorage et l'affiche sur l'icone Panier du menu
+ */
 function cartPreview() {
     let currentCart = JSON.parse(localStorage.getItem("products")) || []
     let currentCartCount = 0
@@ -31,13 +45,10 @@ function cartPreview() {
     }
 }
 
-function clearCart() {
-    localStorage.removeItem('products');
-    buildCart()
-    cartPreview()
-
-}
-
+/** Remplace les caractères &<>"' par leurs équivalents HTML
+ * @param { string } output
+ * @return { string } output echappé
+ */
 function escapeOutput(output) {
     return output
         .replace(/&/g, "&amp;")
@@ -49,5 +60,5 @@ function escapeOutput(output) {
 
 let errorMsg = `<div class="col-12 p-3 text-center p-5">
                 <i class="fas fa-exclamation-triangle display-1 mb-3"></i>
-                <p class="display-6 fs-4 text-center text-danger">Une erreur est survenue, veuillez rééssayer ultérieurement.</p>
+                <p class="display-6 fs-4 text-center text-danger">Une erreur est survenue, veuillez réessayer ultérieurement.</p>
                 </div>`

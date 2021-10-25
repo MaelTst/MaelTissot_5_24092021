@@ -1,9 +1,10 @@
+// une fois le DOM chargé, fetch l'API et ajoute le contenu retourné par la fonction buildCards si la réponse est ok, sinon, affiche un message d'erreur
 window.addEventListener('DOMContentLoaded', (event) => {
     fetch(urlApi + "/api/cameras")
         .then((response) => {
             if (response.ok) {
                 response.json()
-                    .then((array) => { buildCards(array) })
+                    .then((array) => { document.getElementById('productContainer').innerHTML = buildCards(array) })
             }
             else {
                 console.log(`Echec de la requete : ${response.status} (${response.statusText})`)
@@ -16,12 +17,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
         });
 });
 
+// Construit et retourne le contenu de la page index
 function buildCards(data) {
-    document.getElementById('productContainer').innerHTML = ""
+    let homepageList = `<h2 class="text-center pb-5 m-0 display-6">Decouvrez nos appareils photo</h2>`
     data.forEach((item) => {
         let price = priceConverter(item.price)
-        // Construit la carte produit de chaque objet du tableau
-        document.getElementById('productContainer').innerHTML += `
+        homepageList += `
             <div class="col-12 col-md-6 col-xl-4 p-3">
                 <div class="card text-center shadow-sm">
                     <div class="overflow-hidden">
@@ -35,4 +36,5 @@ function buildCards(data) {
                 </div>
             </div>`
     })
+    return homepageList
 }

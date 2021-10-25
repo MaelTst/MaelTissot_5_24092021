@@ -1,6 +1,8 @@
 let productId = (new URL(document.location)).searchParams.get('_id');
 let productData = []
 
+// une fois le DOM chargé et en présence d'un ID produit dans l'url, fetch l'API avec l'ID du produit puis appelle la fonction buildProductPage, 
+// sinon, affiche un message d'erreur
 window.addEventListener('DOMContentLoaded', (event) => {
     if (productId) {
         fetch(urlApi + "/api/cameras/" + productId)
@@ -27,6 +29,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 });
 
+// Construit et ajoute le contenu de la page Produit
 function buildProductPage() {
     let price = priceConverter(productData.price)
     document.title = `Appareil photo ${productData.name} - Orinoco`
@@ -59,6 +62,8 @@ function buildProductPage() {
     })
 }
 
+// Construit le tableau contenant les informations du produit et l'ajoute ou le met à jour dans le localStorage,
+// puis rafraichit le compteur de produit du menu en appelant la fonction cartPreview()
 function addToCart() {
     currentCart = JSON.parse(localStorage.getItem("products")) || []
     let selOption = document.getElementById('lensChoice')
