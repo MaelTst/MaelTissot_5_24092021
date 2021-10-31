@@ -75,9 +75,9 @@ function addToCart() {
         name: productData.name,
         price: productData.price,
         imageUrl: productData.imageUrl,
-        lenses: selOption.value,
+        lenses: parseInt(selOption.value),
         lensesText: selOption.options[selOption.value].text,
-        quantity: document.getElementById('productQty').value
+        quantity: parseInt(document.getElementById('productQty').value)
     }
 
     currentCart.forEach((line, index) => {
